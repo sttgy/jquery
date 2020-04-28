@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        p{
+            width:200px;
+            height:200px;
+            background:yellow;
+            border:1px solid gray;
+            left:100px;
+            position: absolute;
+            top:200px;
+        }
+        .fixHeight{
+            width:100%;
+            height:60px;
+            background:red;
+            display:none;
+            position:fixed;
+            top:0;
+            left:0;
+            z-index:1000;
+        }
+        body{
+            padding:60px;
+        }
+    </style>
+</head>
+<body style="height:2000px;">
+    <div class="fixHeight">
+
+    </div>
+    <div class="box">
+        <p>渣男</p>
+    </div>
+</body>
+</html>
+<script src="./jQuery.js"></script>
+<script>
+    $(function(){
+        $('.box').css({'color':'red','font-size':'30px'});
+        // offset获取当前对象的偏移，获取出来是一个对象，有top和left
+        var offset=$('p').offset();
+        console.log(offset);
+
+        $(window).scroll(function(){
+            // console.log(111);
+            // console.log($(this).scrollTop());
+            var scrollTop=$(this).scrollTop();
+            if(scrollTop>offset.top){
+                //show()类似于让元素展示
+                // $('.fixHeight').show();
+                //元素淡入
+                // $('.fixHeight').fadeIn(400);
+                //类似卷帘门的下拉
+                // 在调用动画时，应该先让上一个动画停止，然后在启动下一个动画
+                $('.fixHeight').stop().slideDown();
+            }else{
+                //hide（）让元素隐藏
+                // $('.fixHeight').hide();
+                // 元素淡出
+                // $('.fixHeight').fadeOut(2000);
+                // 类似与卷帘门拉上去的
+                $('.fixHeight').stop().slideUp();
+            } 
+             
+            
+        })
+         
+    })
+</script>

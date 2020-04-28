@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+        <input type="text">
+    </div>
+</body>
+</html>
+<script src="./jQuery.js"></script>
+<script>
+    $(function(){
+        //focus和blur
+        // $('[type=text]').focus();
+        $('[type=text]').focus(function(){
+            $(this).val('渣男是怎样炼成的')
+        });
+        $('[type=text]').blur(function(){
+            $(this).val('电臀成就罗志祥')
+        })
+
+        //使用户无法使用输入框
+        // $('input[type=text]').focus(function(){
+        //     this.blur();
+        // })
+
+        //keydown
+        $(window).keydown(function(event){
+            console.log(event.keyCode);
+            // if(event.keyCode===13){
+            //     alert('你个渣男，胡输入！')
+            // }
+            switch (event.keyCode) {
+                case 32:
+                    alert('张伟');
+                    break;
+                case 13:
+                    alert('是一个渣男');
+                    break;
+                default:
+                    alert('你胡按个锤子')
+                    break;
+            }
+            
+            // $('input[type=text]').css('background','red')
+        })
+    })
+</script>

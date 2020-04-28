@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width:400px;
+            height:400px;
+            /* margin:0 auto; */
+            /* background:red; */
+        }
+        .box img{
+            width:100%;
+            height:100%;
+        }
+        .box p{
+            background:green;
+
+        }
+        .box1{
+            width:100px;
+            height:40px;
+            background:bisque;
+            position:relative;
+            margin-top:40px;
+        }
+        .box1 .content{
+            position:absolute;
+            width:200px;
+            height:200px;
+            top:41px;
+            background:red;
+            display:none;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <p>渣男成长记</p>
+        <img src="./yfh.jpg" alt="">
+    </div>
+    <div class="box1">
+        <div class="content"></div>
+    </div>
+</body>
+</html>
+<script src="./jQuery.js"></script>
+<script>
+    $(function(){
+        // click dbclick mousedown/mouseup mousemove移动事件 
+        // mouseover/mouseout  
+        // mouseenter/mouseleven 
+        // focus blur
+        // keyup keydown
+        // var slide=false;
+        
+        // $('.box img').click(function(){
+           
+            // $(this).hide(5000,function(){
+            //     $(this).show(5000,function(){
+            //         $(this).hide(5000);
+            //         $(this).show(5000);
+            //     });
+            // });
+            // setInterval(() => {
+                // $(this).fadeOut(2000);
+                // $(this).fadeIn(2000);
+                // $(this).slideDown(4000);
+                // $(this).slideUp(4000);
+            // });
+            // $(this).toggle(4000);
+            // time=setInterval('showAd()',4000);
+            // function showAd(){
+            //     $(this).fadeOut();
+            //     clearInterval(time);
+            //     time=setInterval('hideAd()',4000);
+            // }
+            // function hideAd() {
+            //     $(this).fadeIn();
+            //     clearInterval(time);
+            // }
+            // var time=setInterval(() => {
+            //     $(this).fadeOut(2000).fadeIn(2000);
+            //     clearInterval(time);
+            // },2000);
+            
+        // 
+        // })
+        // window.clearInterval(time);
+        // $('.box').dblclick(function(){
+        //     $(this).fadeOut(4000).fadeIn(4000);
+        // })
+
+
+        // mousedown事件和mouseup事件
+        // $('.box').mousedown(function() {
+        //     console.log(1);
+            
+        // })
+        // $('.box').mouseup(function(){
+        //     console.log(2);
+            
+        // })
+
+        // mousemove事件
+        // $('.box').mousemove(function(){
+        //     $(this).hide(3000);
+        // })
+
+        // mouseover()/mouseout()是指鼠标穿过备选元素的或者备选元素的子元素时都会触发
+            // $('.box').mouseover(function(){
+            //     $('.content').show();
+                
+            // })
+
+            // $('.box').mouseout(function(){
+            //     console.log('我又离开了');
+                
+            // })
+
+            // mouseenter()/mouseleave()是指鼠标穿过选定的元素才会触发，而穿过子元素时不会触发，大大提高代码性能！
+            $('.box1').mouseover(function(){
+                console.log(1);
+                
+                $('.content').stop().slideDown(4000);
+                
+            })
+
+            $('.box1').mouseout(function(){
+                console.log(22);
+                $('.content').stop().slideUp(4000);
+                
+            })
+    })
+</script>

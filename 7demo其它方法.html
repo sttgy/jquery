@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .replace{
+        width:200px;
+        height:200px;
+        border:1px solid red;
+    }
+    .active{
+        background:blue;
+    }
+</style>
+<body>
+    <div class="replace">
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+        <p>4</p>
+        <p>5</p>
+    </div>
+    <img src="" alt="">
+</body>
+</html>
+<script src="./jQuery.js"></script>
+<script>
+    $(function(){
+        // replaceWith替换标签
+        // $('.replace p').replaceWith('<i>1</i>');
+
+        // replaceAll
+        // $('<i>1</i>').replaceAll('p');
+
+        // wrap是将所有匹配的元素，用其它元素包裹起来
+        // $('.replace p').wrap('<div class="box"></div>');
+
+        //unwrap是指移除父元素
+        // $('.replace p').unwrap();
+
+        //wrapInner()取到当前节点的字内容，用标签包裹，
+        // $('.replace p').wrapInner('<strong></strong>');
+
+        // attr属性操作,设置单个属性值
+        // $('div').attr('id','one');
+
+        //设置多个属性值
+        // $('div').attr({id:'box',title:'hello'});
+
+        // 获取属性值
+        // console.log($('div').attr('class'));
+        
+        // setTimeout(() => {
+        //     $('img').attr({
+        //        src:'./yfh.jpg',
+        //        alt:'女神'
+        //     })
+        // }, 2000);
+            // $('.replace').click(function(){
+            //     $(this).addClass('active');
+            // })
+        // var isRed=true;
+        $('.replace').click(function(){
+            // if(isRed){
+            //     $(this).addClass('active');
+            //     isRed=false;
+            // }else{
+            //     $(this).removeClass('active');
+            //     isRed=true;
+            // }
+            // if(!$(this).hasClass('active')){
+            //     $(this).addClass('active');
+            // }else{
+            //     $(this).removeClass('active')
+            // }
+            // $(this).addClass('active a b c')
+            $(this).toggleClass('active');
+        })
+    })
+</script>

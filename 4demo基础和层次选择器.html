@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+        <p id="p1">alex</p>
+        <ul>
+            <li class="item1">张三</li>
+            <li class="item2">李四</li>
+            <li class="item3">王五</li>
+            <li class="item4">赵六</li>
+            <li class="item5">号</li>
+        </ul>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+        <h2>6</h2>
+    </div>
+</body>
+</html>
+<script src="./jQuery.js"></script>
+<script>
+    jQuery.noConflict()
+    //id
+    // $('#p1').css('background','red');
+    // class
+    // $('.box').css('color','blue')
+    // 标签
+    // $('ul').css('background','pink');
+    // 后代
+    // $('.box p').css('color','green')
+    // 子代
+    // $('.box>ul>li').css('background','blue')
+    // $('.item1+').css('color','red')//获取紧挨着的标签
+    //*
+    //~
+    // $('.item1~').css('background','red')//获取除过item1之外的标签
+    // $('#p1~').css('background','red')
+    
+    // 获取同级多个元素
+    // $('p,ul').css('background','red')
+
+
+</script>

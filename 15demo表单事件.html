@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box span{
+            z-index:-9999;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <form action="">
+            <input type="text">
+            <span></span>
+            <select name="" id="select">
+                <option value="a">a</option>
+                <option value="b">b</option>
+            </select>
+            <input type="submit">
+        </form>
+    </div>
+</body>
+</html>
+<script src="./jQuery.js"></script>
+<script>
+    // 1.change()
+    // 2.seclect()
+    // 3.submit()
+    $(function(){
+        // 1.change()适用于select和textarea
+        $('input[type=text]').change(function(event){
+            console.log(event);
+            var val=$(this).val();
+            if(/^\d{4}$/.test(val)){
+                console.log('您输入正确');
+                
+            }else{
+                $('.box span').css({'z-index':'1','font-size':'12px','color':'red'}).text('亲，输入错误了！')
+                
+            }
+            
+        })
+
+        // 2.seclect()
+        // $('#select').change(function(){
+        //     console.log($(this).val());
+            
+        // })
+        $('form').submit(function(event){
+            // console.log(111);
+            // event可以阻止默认行为
+            // console.log(event);
+            event.preventDefault();
+            console.log(111);
+            var val=$('input[type=text]').val();
+            var oval=$('#select').val();
+
+            // 与后端发生交互行为
+            
+        })
+    })
+</script>

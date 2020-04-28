@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">
+        渣男
+    </div>
+</body>
+</html>
+<script src="./index.js"></script>
+<script src="./jQuery.js"></script>
+<script>
+    //jquery提供了一个解决多个库变量名冲突的方法
+    jQuery.noConflict();
+    console.log($);
+    
+    // $(function(){
+    //     $('#box').css('color','red')
+    // })
+    (function($){
+        $(function(){
+            $('#box').css('color','red')
+        })
+    })(jQuery);
+</script>

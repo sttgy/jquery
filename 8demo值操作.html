@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="content">
+        <ul>
+            <li>
+                <!-- <img src="./yfh.jpg" alt=""> -->
+                <p>小马哥</p>
+            </li>
+        </ul>
+        <input type="text" value="俞飞鸿">
+        <select name="" id="single">
+            <option>西安</option>
+            <option>北京</option>
+        </select>
+        <select name="" id="multiple" multiple>
+            <option selected>西安</option>
+            <option>北京</option>
+            <option>上海</option>
+            <option>广州</option>
+            <option selected>东莞</option>
+        </select>
+    </div>
+</body>
+</html>
+<script src="./jQuery.js"></script>
+<script>
+    $(function(){
+    //    console.log($('li:first').html());
+    $('ul li').append('<h3>俞飞鸿</h3>');
+    // console.log($('li').text());
+    console.log($('input').val());
+    $('#single').val('北京');
+    $('#multiple').val(['北京','上海'])
+     
+     
+        
+    })
+</script>

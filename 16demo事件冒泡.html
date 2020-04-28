@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width:200px;
+            height:200px;
+            border:1px solid red;
+        }
+        h3{
+            background-color: bisque;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h3>你好，渣男，请展示你的电臀</h3>
+    </div>
+</body>
+</html>
+<script src="./jQuery.js"></script>
+<script>
+    $(function(){
+        $('.box').click(function(){
+            alert(1);
+            return false;
+        });
+        $('h3').click(function(event){
+            event.stopPropagation();
+            alert(2)
+        })
+        $(document).click(function(){
+            alert(3)
+        })
+
+    })
+
+</script>

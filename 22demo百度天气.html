@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a{
+            display:inline-block;
+        }
+        .header{
+            width:100%;
+            height:40px;
+            line-height:40px;
+            background:green;
+            /* opacity:0.4; */
+            position: relative;
+        }
+        .weather-now{
+            display:inline-block;
+        }
+        .weather-now a{
+            text-decoration:none;
+            color:#fff;
+        }
+        .weather-now img{
+            border-radius:50%;
+            width:30px;
+            vertical-align:middle;
+        }
+        .show-weather{
+            display:none;
+            position:absolute;
+            top:40px;
+            background-color:antiquewhite;
+        }
+        .everyday-item{
+            display:inline-block;
+            padding:20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="weather-now">
+            <a href="javascript:;">
+                <span class="city">西安:</span>
+                <img src="./yfh.jpg" alt="" class="weatherImg">
+                <span class="tmp">31</span>
+                <span class="cond_txt">晴</span>
+                <span class="f1">32</span>
+            </a>
+            <div class="show-weather">
+                <div class="everyday-weather">
+                    <div class="everyday-item">
+                        <!-- <p class="everyday-title">今天(星期一)</p>
+                        <img src="./yfh.jpg" alt="" class="everyday-icon">
+                        <p class="everyday-temp">31</p>
+                        <p class="everyday-cond-txt">晴</p>
+                        <p class="everyday-cond-wind">北风</p> -->
+                    </div>
+                    <div class="everyday-item">
+                        <!-- <p class="everyday-title">今天(星期一)</p>
+                        <img src="./yfh.jpg" alt="" class="everyday-icon">
+                        <p class="everyday-temp">31</p>
+                        <p class="everyday-cond-txt">晴</p>
+                        <p class="everyday-cond-wind">北风</p> -->
+                    </div>
+                    <div class="everyday-item">
+                        <!-- <p class="everyday-title">今天(星期一)</p>
+                        <img src="./yfh.jpg" alt="" class="everyday-icon">
+                        <p class="everyday-temp">31</p>
+                        <p class="everyday-cond-txt">晴</p>
+                        <p class="everyday-cond-wind">北风</p> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="./jQuery.js"></script>
+<script src="./monment.js"></script>
+<script>
+    $(function(){
+        $('.weather-now').mouseenter(function(){
+            $('.show-weather').stop().fadeIn();
+            getForecastWeather('https://free-api.heweather.net/s6/weather/forecast?location=xian&key=4693ff5ea653469f8bb0c29638035976')
+        })
+        $('.weather-now').mouseleave(function(){
+            $('.show-weather').stop().fadeOut();
+        })
+
+        // 轮训
+        setInterval(function(){
+            getForecastWeather(
+                'https://free-api.heweather.net/s6/weather/forecast?location=xian&key=4693ff5ea653469f8bb0c29638035976'
+                );
+            getNowWe(
+                'https://free-api.heweather.net/s6/weather/now?location=xian&key=4693ff5ea653469f8bb0c29638035976'
+            )
+        }, 1000*60);
+        
+        // 设置全局为中文
+        moment.defineLocale('zh-cn', {
+
+        months : '一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月'.split('_'),
+
+        monthsShort : '1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月'.split('_'),
+
+        weekdays : '星期日_星期一_星期二_星期三_星期四_星期五_星期六'.split('_'),
+
+        weekdaysShort : '周日_周一_周二_周三_周四_周五_周六'.split('_'),
+
+        weekdaysMin : '日_一_二_三_四_五_六'.split('_'),
+
+        longDateFormat : {
+
+        LT : 'Ah点mm分',
+
+        LTS : 'Ah点m分s秒',
+
+        L : 'YYYY-MM-DD',
+
+        LL : 'YYYY年MMMD日',
+
+        LLL : 'YYYY年MMMD日Ah点mm分',
+
+        LLLL : 'YYYY年MMMD日ddddAh点mm分',
+
+        l : 'YYYY-MM-DD',
+
+        ll : 'YYYY年MMMD日',
+
+        lll : 'YYYY年MMMD日Ah点mm分',
+
+        llll : 'YYYY年MMMD日ddddAh点mm分'
+
+        },
+
+        meridiemParse: /凌晨|早上|上午|中午|下午|晚上/,
+
+        meridiemHour: function (hour, meridiem) {
+
+        if (hour === 12) {
+
+        hour = 0;
+
+        }
+
+        if (meridiem === '凌晨' || meridiem === '早上' ||
+
+        meridiem === '上午') {
+
+        return hour;
+
+        } else if (meridiem === '下午' || meridiem === '晚上') {
+
+        return hour + 12;
+
+        } else {
+
+        // '中午'
+
+        return hour >= 11 ? hour : hour + 12;
+
+        }
+
+        },
+
+        meridiem : function (hour, minute, isLower) {
+
+        var hm = hour * 100 + minute;
+
+        if (hm < 600) { return '凌晨' ; } else if (hm < 900) { return '早上' ; } else if (hm < 1130) { return '上午' ; } else
+            if (hm < 1230) { return '中午' ; } else if (hm < 1800) { return '下午' ; } else { return '晚上' ; } }, calendar :
+            { sameDay : function () { return this.minutes()===0 ? '[今天]Ah[点整]' : '[今天]LT' ; }, nextDay : function () {
+            return this.minutes()===0 ? '[明天]Ah[点整]' : '[明天]LT' ; }, lastDay : function () { return this.minutes()===0
+            ? '[昨天]Ah[点整]' : '[昨天]LT' ; }, nextWeek : function () { var startOfWeek, prefix;
+            startOfWeek=moment().startOf('week'); prefix=this.unix() - startOfWeek.unix()>= 7 * 24 * 3600 ? '[下]' :
+            '[本]';
+
+            return this.minutes() === 0 ? prefix + 'dddAh点整' : prefix + 'dddAh点mm';
+
+            },
+
+            lastWeek : function () {
+
+            var startOfWeek, prefix;
+
+            startOfWeek = moment().startOf('week');
+
+            prefix = this.unix() < startOfWeek.unix() ? '[上]' : '[本]' ; return this.minutes()===0 ? prefix + 'dddAh点整' :
+                prefix + 'dddAh点mm' ; }, sameElse : 'LL' }, ordinalParse: /\d{1,2}(日|月|周)/, ordinal : function (number,
+                period) { switch (period) { case 'd' : case 'D' : case 'DDD' : return number + '日' ; case 'M' : return
+                number + '月' ; case 'w' : case 'W' : return number + '周' ; default: return number; } }, relativeTime : {
+                future : '%s内' , past : '%s前' , s : '几秒' , m : '1 分钟' , mm : '%d 分钟' , h : '1 小时' , hh : '%d 小时' , d
+                : '1 天' , dd : '%d 天' , M : '1 个月' , MM : '%d 个月' , y : '1 年' , yy : '%d 年' }, week : { // GB/T7408-1994《数据元和交换格式·信息交换·日期和时间表示法》与ISO 8601:1988等效 
+                dow : 1, // Monday is the first day of the week. 
+                doy :4 // The week that contains Jan 4th is the first week of the year. 
+                } 
+            });
+
+        // console.log(moment('2019-09-23').format('dddd'));
+
+            // 获取今天，明天，后天
+            function getDay(i){
+                switch (i) {
+                    case 0:
+                        return '今天'
+                        break;
+                    case 1:
+                        return '明天'
+                        break;
+                    default:
+                        return '后天'
+                        break;
+                }
+            }
+
+
+            // 获取未来三天的天气
+        function getForecastWeather(url){
+            // 发送ajax氢气未来三天的天气
+            $.ajax({
+                url:url,
+                method:'get',
+                success:function(res){
+                    // console.log(res);
+                    var daily_forecast=res.HeWeather6[0].daily_forecast;
+                    // console.log(daily_forecast);
+                    // each()循环
+                    $('.everyday-item').each(function(i){
+                        var wind_spd=daily_forecast[i].wind_spd;
+                        var tmp_max=daily_forecast[i].tmp_max;
+                        var cond_txt_d=daily_forecast[i].cond_txt_d;
+                        var wind_dir=daily_forecast[i].wind_dir;
+                        var date=daily_forecast[i].date;
+                        var week=moment(date).format('dddd');
+                        $(this).empty();
+                        $(this).append(`
+                            <p class="everyday-title">${getDay(i)}(${week})</p>
+                            <img src="./timg${wind_spd}.jpg" alt="" class="everyday-icon">
+                            <p class="everyday-temp">${tmp_max}</p>
+                            <p class="everyday-cond-txt">${cond_txt_d}</p>
+                            <p class="everyday-cond-wind">${wind_dir}</p>
+                        `)
+                    })
+                    
+                },
+                error:function(err){
+                    console.log(err);
+                    
+                }
+            })
+        }
+
+
+
+
+        // 获取实况天气
+        function getNowWe(url){
+            //发送ajax到和风天气的服务端获取数据
+            $.ajax({
+                url:url,
+                method:'get',
+                success:function(res){
+                   var status=res.HeWeather6[3].status;
+                //    console.log(res.HeWeather6[0]);
+                   if(status==='ok'){
+                    var now=res.HeWeather6[3].now;
+                    var city=res.HeWeather6[3].basic.location;
+                    // 实况天气图标
+                    var wind_sc=now.wind_sc;
+                    var cond_txt=now.cond_txt;
+                    // 当前温度
+                    var tmp=now.tmp;
+                    // 体感温度
+                    var f1=now.f1;
+                    $('.city').html(city+':');
+                    $('.weatherImg').attr('src',`./timg${wind_sc}.jpg`);
+                    $('.cond_txt').html(cond_txt);
+                    $('.tmp').html(tmp+'℃');
+                    $('.f1').html(f1);
+                   }
+                    
+                },
+                error:function(err){
+                    console.log(err);
+                    
+                }
+            })
+        }
+        // 'https://free-api.heweather.net/s6/weather/forecast?location=xian&key=4693ff5ea653469f8bb0c29638035976'
+        getNowWe('https://free-api.heweather.net/s6/weather/now?location=xian&key=4693ff5ea653469f8bb0c29638035976');
+    })
+</script>

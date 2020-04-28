@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width:400px;
+            height:400px;
+            background:red;
+        }
+        .box img{
+            width:100%;
+            height:100%;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">显示</button>
+    <div class="box">
+        <img src="./yfh.jpg" alt="">
+    </div>
+</body>
+</html>
+<script src="./jQuery.js"></script>
+<script>
+    $(function(){
+        // hover()事件
+        // $('.box').mouseenter(function(){
+        //     $(this).stop().hide(1000);
+        // });
+        // $('.box').mouseleave(function(){
+        //     $(this).stop().show(1000);
+        // })
+        $('.box').hover(function(){
+            $(this).css('background','green')
+        },function(){
+            $(this).css('background','red')
+        })
+
+
+        // toggle()
+        // var isShow=true;
+        // $('#btn').click(function(){
+        //     if(isShow){
+        //         $('.box').hide();
+        //         $(this).text('隐藏');
+        //         isShow=false;
+        //     }else{
+        //         $('.box').show();
+        //         $(this).text('显示');
+        //         isShow=true;
+        //     }
+        // })
+        // $('#btn').click(function(){
+        //     $('.box').toggle();
+        // })
+        // $('#btn').click(function(){
+        //     $('.box').fadeToggle(5000);
+        // })
+
+        $('#btn').click(function(){
+            $('.box').slideToggle(4000);
+        });
+
+
+
+    })
+</script>

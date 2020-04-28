@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+        width:400px;
+        height:400px;
+        background:red;
+        }
+        .box img{
+        width:100%;
+        height:100%;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">显示</button>
+    <div class="box">
+        <img src="./yfh.jpg" alt="">
+    </div>
+</body>
+</html>
+<script src="./jQuery.js"></script>
+<script>
+    $(function(){
+        $('#btn').click(function(){
+            // $('.box').hide(3000);
+            // $('.box').fadeOut(4000);
+            // $('.box').fadeTo(400,0.3);
+            // $('.box').toggle();
+            // $('.box').fadeToggle(3000);
+            // $('.box').slideToggle(200);
+
+
+            // 它既能实现jQuery的动画效果，也能实现自定义效果
+            $('.box').animate({
+                width:300,
+                height:300
+            },1000,function(){
+                $('.box img').slideToggle();
+            })
+        })
+    })
+</script>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            background:gray;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>
+            <button>按钮1</button>
+        </li>
+        <li>
+            <button>按钮2</button>
+        </li>
+        <li>
+            <button>按钮3</button>
+        </li>
+        <li>
+            <button>按钮4</button>
+        </li>
+        <li>
+            <button>按钮5</button>
+        </li>
+    </ul>
+</body>
+</html>
+<script src="./jQuery.js"></script>
+<script>
+    // jQuery.noConflict();
+    $(function(){
+        //siblings获取当前元素，除了他之外。
+        $('button').click(function(){
+            // $(this).css({'background':'red'}).siblings('button').css({'background':'gray'});
+            $(this).css({'background':'red'}).parent().siblings('li').children().css({'background':'gray'});
+        })
+    })
+
+</script>

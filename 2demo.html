@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script src="./jQuery.js"></script>
+<script>
+    // 两者的区别？
+    // window.onload----------------------------$(document).ready(function(){})
+    // 1:必须等待网页全部加载完毕后才能执行---------只需要等待DOM加载完毕后就会执行。
+    // 包括DOM和图片
+
+    // 2：只执行一次，如果有第二次，----------------可以执行多次，每次都会执行，不会被覆盖
+    // 那么第二次会覆盖第一次
+    
+    // 3：没有简写方式---------------------------------$(function(){})
+    
+    // window.onload=function(){
+    //     alert(1);
+    // }
+    // window.onload=function(){
+    //     alert(2);
+    // }
+    //根jQuery的入口函数比较
+    // $(document).ready(function(){
+    //     alert(1);
+    // })
+    // $(function(){
+    //     alert(2);
+    // })
+</script>

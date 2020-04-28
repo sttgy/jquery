@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h4>张雨涵</h4>
+    <div class="box">
+
+    </div>
+    <div class="wrap">
+        <button>点我</button>
+    </div>
+    <div class="clone">
+        <ul>
+            <li>张雨涵</li>
+        </ul>
+    </div>
+</body>
+</html>
+<script src="./jQuery.js"></script>
+<script>
+    $(function(){
+        // 1.append给哪个元素里面追加
+        var h3Tag=document.createElement('span');
+        h3Tag.innerText='张伟是个渣男'
+        var newHtml='<h3>你好渣男</h3>';
+        $('.box').append(newHtml);
+        $('.box').append(h3Tag);
+        // 如果是网页中本来就存在的元素，则是一种移动现象
+        $('.box').append($('h4'));
+        
+        //2.appendTo追加到哪个元素的里面
+        var newli='<h5>李勇是渣男</h5>'
+        $(newli).appendTo('.box').css('color','red').click(function(){
+            $(this).text('米占明是渣男')
+        });
+        $('<span>董灵珊是渣女</span>').appendTo('.box h4')
+
+        // 3prepend是前置追加
+        $('.box').prepend('<h1>我是标题</h1>');
+
+        //4.prependTo是前置追加到
+        var newstr='<h2>我是渣男</h2>';
+        $(newstr).prependTo('.box').css('background','green').click(function(){
+            $(this).append("<a href='http://www.baidu.com'>走你</a>");
+        })
+
+        //after是同级之间的操作
+        $('h5').after('<span>我想改变</span>');
+
+        //insertAfter是同级插入内容，后可以链式改样式。
+        $('<i>自律即自由</i>').insertAfter('h5').css('color','pink');
+
+        //before是在某个同级元素之前添加
+        $('span').before('<strong>强壮的男人</strong>');
+
+        //insertBefore是同级前置插入内容，后可以链式写样式
+        $('<b>强壮的女人</b>').insertBefore('span').css('color','blue');
+
+
+
+
+        //remove删除节点
+        $('button').css('background','red').click(function(){
+            // var btn=$('h2').remove();
+            // $('.wrap').prepend(btn);
+
+            // remove即删除节点，也删除节点上的事件
+            // var btn=$(this).remove();
+            // $('.box').prepend(btn);
+
+
+            // detach()是只删除节点，但是不删除节点上绑定的方法
+            // var btn=$(this).detach();
+            // $('.box').prepend(btn);
+            // $('h1').append("<a href='#'>你猜</a>")
+
+
+
+            //empty()清空节点
+            // $('.box').empty();
+            // console.log($('.box').html());
+            // console.log($('.box').text());
+            // $('.box').html('');
+            
+        });
+
+
+        //clone克隆元素
+        $('.clone ul li').click(function(){
+            $(this).clone(true).appendTo('.clone ul');
+        })
+    })
+
+</script>

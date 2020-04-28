@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+        <p class="cond-txt"></p>
+    </div>
+</body>
+</html>
+<script src="./jQuery.js"></script>
+<script>
+    $(function(){
+        // ajax在不重载页面的情况下，对页面进行更新
+        // get和post请求
+        // 模拟第三方的接口【和风天气】
+        // https://api.heweather.net/s6/weather/now?location=beijing&key=4693ff5ea653469f8bb0c29638035976
+        // https://free-api.heweather.net/s6/weather/now?location=xian&key=4693ff5ea653469f8bb0c29638035976
+        // key:4693ff5ea653469f8bb0c29638035976
+        $.ajax({
+            url:'https://free-api.heweather.net/s6/weather/now?location=xian&key=4693ff5ea653469f8bb0c29638035976',
+            method:'get',
+            success:function(res){
+                var status=res.HeWeather6[0].status;
+                if(status==='ok'){
+                    // console.log(res.HeWeather6[0].now);
+                    var cond_txt=res.HeWeather6[0].now.cond_txt;
+                    $('.box .cond-txt').html(cond_txt);
+                } 
+            }
+        });
+
+
+        // $.ajax({
+        //     url:'',
+        //     method:'post',
+        //     data:{
+        //         username:'渣男',
+        //         password:$('input[type=password]').val()
+        //     },
+        //     success:function(res){
+        //     console.log(res);
+        //     }
+        // })
+    })
+</script>

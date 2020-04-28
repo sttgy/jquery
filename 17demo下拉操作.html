@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        .slideDown{
+            width:100%;
+            height:400px;
+            background: aqua;
+            position: fixed;
+            top:0;
+            left:0;
+            display:none;
+        }
+        .slideDown ul{
+            display:flex;
+            justify-content:space-around;
+            flex-shrink:0;
+        }
+        .slideDown ul li{
+            display:inline-block;
+            width:100px;
+            height:40px;
+            background:blue;
+            color:pink;
+            line-height:40px;
+            text-align:center;
+
+        }
+        .slideDown ul li a{
+            display:block;
+            width:100px;
+            height:40px;
+            color:pink;
+        }
+        .slideDown ul li a img{
+            width:400px;
+            height:200px;
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+    <a href="#" class="changefu">换肤</a>
+    <div class="slideDown">
+        <ul>
+            <li><a href="#">热门</a></li>
+            <li><a href="#">游戏</a></li>
+            <li><a href="#">美女</a></li>
+            <li><a href="#">周杰伦</a></li>
+        </ul>
+    </div>
+</body>
+</html>
+<script src="./jQuery.js"></script>
+<script>
+    $(function(){
+        $('.changefu').click(function(event){
+            event.preventDefault();
+            event.stopPropagation();
+            $('.slideDown').stop().slideDown(5000);
+            $('.slideDown ul li a').click(function(event){
+                event.preventDefault();
+                event.stopPropagation();
+                $(this).append("<img src='./yfh.jpg'/>")
+                $(this).css('color','red').parent().siblings('li').children().css('color','pink');
+            })
+        });
+        $('.slideDown,ul').click(function(){
+            return false
+        })
+        $(document).click(function(){
+            $('.slideDown').stop().slideUp();
+        })
+    })
+</script>
